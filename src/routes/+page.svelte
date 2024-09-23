@@ -3,11 +3,6 @@
 	import Client from '$lib/components/Client.svelte';
 	import Clients from '$lib/components/Clients.svelte';
 	import TimeSlots from '$lib/components/TimeSlots.svelte';
-	import { setContext } from 'svelte';
-
-	setContext('apiReference', {
-		mainUrl: 'http://localhost:3012/api/v1'
-	});
 </script>
 
 <svelte:head>

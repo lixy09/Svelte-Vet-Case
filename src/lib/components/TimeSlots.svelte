@@ -1,5 +1,6 @@
 <script>
-	import { getContext, onMount } from 'svelte';
+	import { onMount } from 'svelte';
+	import { apiUrl } from '../../config';
 	import TimeSlot from './TimeSlot.svelte';
 	import { appointmentStore, dateStore, timeslotStore, selectedDateStore } from '../../store';
 
@@ -11,12 +12,13 @@
 	onMount(async () => {
 		try {
 			// first fetch
-			const response = await fetch(`http://localhost:3012/api/v1/timeslots`);
+			const response = await fetch(`${apiUrl}/timeslots/`);
 			const itemUrls = await response.json();
+			// console.log(itemUrls);
 
 			// second fetch
 			const itemPromises = itemUrls.data.map(async (url) => {
-				const res = await fetch(`http://localhost:3012/api/v1${url}`);
+				const res = await fetch(`${apiUrl}${url}`);
 				return res.json();
 			});
 
